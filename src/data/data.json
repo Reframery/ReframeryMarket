@@ -1,0 +1,412 @@
+{
+  "products": [
+    {
+      "_id": "5ff49fdb2b3346baec7b48ea",
+      "category": "products",
+      "name": "Birthday Cake",
+      "image": "/images/product_cake.jpg",
+      "price": 20,
+      "stock": 0,
+      "description": "Homebaked Cakes - ideal for Birthdays and Special Occasions. ",
+      "discount": 0.9,
+      "subCategoryID": "5fe793913bf2cc0914f63955",
+      "userID": "user02@gmail.com",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:54:15.041Z",
+      "updatedAt": "2020-12-26T19:54:15.041Z"
+    },
+    {
+      "_id": "5ff49fdb2b3346baec7b48eb",
+      "category": "products",
+      "name": "Cookies",
+      "image": "/images/product_cookies.jpg",
+      "price": 3,
+      "stock": 20,
+      "description": " ",
+      "discount": 0.9,
+      "subCategoryID": "5fe793913bf2cc0914f63955",
+      "userID": "user02@gmail.com",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:54:15.042Z",
+      "updatedAt": "2020-12-26T19:54:15.042Z"
+    },
+    {
+      "_id": "5ff49fdb2b3346baec7b48ec",
+      "category": "products",
+      "name": "Cute Cookies",
+      "image": "/images/product_candy.jpg",
+      "price": 4,
+      "stock": 20,
+      "description": "",
+      "discount": 0.9,
+      "subCategoryID": "5fe793913bf2cc0914f63955",
+      "userID": "user02@gmail.com",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:54:15.042Z",
+      "updatedAt": "2020-12-26T19:54:15.042Z"
+    }
+  ],
+  "services": [
+    {
+      "_id": "5ff49fdb2b3346baec7b48ed",
+      "category": "Services",
+      "name": "Food Deliver",
+      "image": "/images/service_deliver.jpg",
+      "price": 19,
+      "stock": 20,
+      "description": "",
+      "discount": 0.9,
+      "subCategoryID": "5fe793913bf2cc0914f6395b",
+      "userID": "user02@gmail.com",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:54:15.049Z",
+      "updatedAt": "2020-12-26T19:54:15.049Z"
+    },
+    {
+      "_id": "5ff49fdb2b3346baec7b48ee",
+      "category": "Services",
+      "name": "Lawn Mowing",
+      "image": "/images/service_mowLawn.jpeg",
+      "price": 18,
+      "stock": 20,
+      "description": "",
+      "discount": 0.9,
+      "subCategoryID": "5fe793913bf2cc0914f63957",
+      "userID": "user02@gmail.com",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:54:15.049Z",
+      "updatedAt": "2020-12-26T19:54:15.049Z"
+    },
+    {
+      "_id": "5ff49fdb2b3346baec7b48ef",
+      "category": "Services",
+      "name": "Plumber",
+      "image": "/images/service_plumber.jpg",
+      "price": 19,
+      "stock": 20,
+      "description": "",
+      "discount": 0.9,
+      "subCategoryID": "5fe793913bf2cc0914f63958",
+      "userID": "user02@gmail.com",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:54:15.049Z",
+      "updatedAt": "2020-12-26T19:54:15.049Z"
+    }
+  ],
+  "expertises": [
+    {
+      "_id": "5ff49fdb2b3346baec7b48f0",
+      "category": "Expertises",
+      "name": "Small Business Counsulting",
+      "image": "/images/expertise_consulting.jpg",
+      "price": 19,
+      "stock": 20,
+      "description": "",
+      "discount": 0.9,
+      "subCategoryID": "fe793913bf2cc0914f6395a",
+      "userID": "user02@gmail.com",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:54:15.054Z",
+      "updatedAt": "2020-12-26T19:54:15.054Z"
+    },
+    {
+      "_id": "5ff49fdb2b3346baec7b48f1",
+      "category": "Expertises",
+      "name": "Training",
+      "image": "/images/expertise_training.png",
+      "price": 18,
+      "stock": 20,
+      "description": "",
+      "discount": 0.9,
+      "subCategoryID": "5fe793913bf2cc0914f63959",
+      "userID": "user02@gmail.com",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:54:15.054Z",
+      "updatedAt": "2020-12-26T19:54:15.054Z"
+    },
+    {
+      "_id": "5ff49fdb2b3346baec7b48f2",
+      "category": "Expertises",
+      "name": "Legal Advice",
+      "image": "/images/expertise_legaladvice.jpg",
+      "price": 19,
+      "stock": 20,
+      "description": "",
+      "discount": 0.9,
+      "subCategoryID": "5fe793913bf2cc0914f6395a",
+      "userID": "user02@gmail.com",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:54:15.055Z",
+      "updatedAt": "2020-12-26T19:54:15.055Z"
+    }
+  ],
+  "users": [
+    {
+      "country": "",
+      "admin": false,
+      "phoneNumber": "3658884030",
+      "address": "",
+      "firstName": "",
+      "lastName": "",
+      "birthday": "",
+      "userImage": "/images/competence_deliver.jpg",
+      "validateStatus": false,
+      "validateTime": null,
+      "superAdmin": false,
+      "balance": 0,
+      "addressID": "5fe76b8d1ccb4a626c67c33c",
+      "_id": "5fe791ca8db443226c6cd242",
+      "username": "user01",
+      "email": "user01@gmail.com",
+      "password": "1234",
+      "communityName": "Canada",
+      "registerTime": "2020-12-26T19:38:23.610Z",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:40:58.770Z",
+      "updatedAt": "2020-12-26T19:40:58.770Z"
+    },
+    {
+      "country": "",
+      "admin": false,
+      "phoneNumber": "3658884030",
+      "address": "",
+      "firstName": "",
+      "lastName": "",
+      "birthday": "",
+      "userImage": "/images/competence_deliver.jpg",
+      "validateStatus": false,
+      "validateTime": null,
+      "superAdmin": false,
+      "balance": 0,
+      "addressID": "5fe76b8d1ccb4a626c67c33c",
+      "_id": "5fe791ca8db443226c6cd243",
+      "username": "user02",
+      "email": "user02@gmail.com",
+      "password": "1234",
+      "communityName": "Canada",
+      "registerTime": "2020-12-26T19:38:23.637Z",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:40:58.772Z",
+      "updatedAt": "2020-12-26T19:40:58.772Z"
+    },
+    {
+      "country": "",
+      "admin": true,
+      "phoneNumber": "3658884030",
+      "address": "",
+      "firstName": "",
+      "lastName": "",
+      "birthday": "",
+      "userImage": "/images/competence_deliver.jpg",
+      "validateStatus": false,
+      "validateTime": null,
+      "superAdmin": false,
+      "balance": 0,
+      "addressID": "5fe76b8d1ccb4a626c67c33c",
+      "_id": "5fe791ca8db443226c6cd244",
+      "username": "admin01",
+      "email": "admin01@gmail.com",
+      "password": "1234",
+      "communityName": "Canada",
+      "registerTime": "2020-12-26T19:38:23.661Z",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:40:58.772Z",
+      "updatedAt": "2020-12-26T19:40:58.772Z"
+    },
+    {
+      "country": "",
+      "admin": false,
+      "phoneNumber": "3658884030",
+      "address": "",
+      "firstName": "",
+      "lastName": "",
+      "birthday": "",
+      "userImage": "/images/competence_deliver.jpg",
+      "validateStatus": false,
+      "validateTime": null,
+      "superAdmin": true,
+      "balance": 0,
+      "addressID": "5fe76b8d1ccb4a626c67c33c",
+      "_id": "5fe791ca8db443226c6cd245",
+      "username": "superAdmin01",
+      "email": "superAdmin01@gmail.com",
+      "password": "1234",
+      "communityName": "Canada",
+      "registerTime": "2020-12-26T19:38:23.688Z",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:40:58.773Z",
+      "updatedAt": "2020-12-26T19:40:58.773Z"
+    }    
+  ],
+  "communities": [
+    {
+      "_id": "5fe76baab69d0843c44af87e",
+      "name": "Canada",
+      "__v": 0,
+      "createdAt": "2020-12-26T16:58:18.813Z",
+      "updatedAt": "2020-12-26T16:58:18.813Z"
+    },
+    {
+      "_id": "5fe76baab69d0843c44af87f",
+      "name": "USA",
+      "__v": 0,
+      "createdAt": "2020-12-26T16:58:18.814Z",
+      "updatedAt": "2020-12-26T16:58:18.814Z"
+    },
+    {
+      "_id": "5fe76baab69d0843c44af880",
+      "name": "Brazil",
+      "__v": 0,
+      "createdAt": "2020-12-26T16:58:18.814Z",
+      "updatedAt": "2020-12-26T16:58:18.814Z"
+    }
+  ],
+  "addresses": [
+    {
+      "_id": "5fe76b8d1ccb4a626c67c33c",
+      "address": "100 Main Street South",
+      "city": "Hamilton",
+      "province": "Ontario",
+      "country": "Canada",
+      "postcode": "L3P 5H8",
+      "__v": 0,
+      "createdAt": "2020-12-26T16:57:49.648Z",
+      "updatedAt": "2020-12-26T16:57:49.648Z"
+    }
+  ],
+  "subCategories": [
+    {
+      "_id": "5fe793913bf2cc0914f63955",
+      "name": "Food",
+      "userID": "5fe791ca8db443226c6cd243",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:48:33.142Z",
+      "updatedAt": "2020-12-26T19:48:33.142Z"
+    },
+    {
+      "_id": "5fe793913bf2cc0914f63956",
+      "name": "Toy",
+      "userID": "5fe791ca8db443226c6cd242",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:48:33.143Z",
+      "updatedAt": "2020-12-26T19:48:33.143Z"
+    },
+    {
+      "_id": "5fe793913bf2cc0914f63957",
+      "name": "Landscaping",
+      "userID": "5fe791ca8db443226c6cd242",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:48:33.143Z",
+      "updatedAt": "2020-12-26T19:48:33.143Z"
+    },
+    {
+      "_id": "5fe793913bf2cc0914f63958",
+      "name": "HomeMaintenance",
+      "userID": "5fe791ca8db443226c6cd243",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:48:33.143Z",
+      "updatedAt": "2020-12-26T19:48:33.143Z"
+    },
+    {
+      "_id": "5fe793913bf2cc0914f63959",
+      "name": "Training",
+      "userID": "5fe791ca8db443226c6cd242",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:48:33.144Z",
+      "updatedAt": "2020-12-26T19:48:33.144Z"
+    },
+    {
+      "_id": "5fe793913bf2cc0914f6395a",
+      "name": "Consulting",
+      "userID": "5fe791ca8db443226c6cd243",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:48:33.144Z",
+      "updatedAt": "2020-12-26T19:48:33.144Z"
+    },
+    {
+      "_id": "5fe793913bf2cc0914f6395b",
+      "name": "Deliver",
+      "userID": "5fe791ca8db443226c6cd243",
+      "__v": 0,
+      "createdAt": "2020-12-26T19:48:33.144Z",
+      "updatedAt": "2020-12-26T19:48:33.144Z"
+    }
+  ],
+  "feedbacks": [
+    {
+      "_id": "5fe79801ef54ff2c6c8da9c3",
+      "itemID": "user02@gmail.com",
+      "userID": "user02@gmail.com",
+      "rating": 5,
+      "createdTime": "2020-12-26T20:06:10.913Z",
+      "description": "Good",
+      "__v": 0,
+      "createdAt": "2020-12-26T20:07:29.676Z",
+      "updatedAt": "2020-12-26T20:07:29.676Z"
+    },
+    {
+      "_id": "5fe79801ef54ff2c6c8da9c4",
+      "itemID": "user02@gmail.com",
+      "userID": "user02@gmail.com",
+      "rating": 5,
+      "createdTime": "2020-12-26T20:06:10.913Z",
+      "description": "Good",
+      "__v": 0,
+      "createdAt": "2020-12-26T20:07:29.676Z",
+      "updatedAt": "2020-12-26T20:07:29.676Z"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "user02@gmail.com",
+      "transactionToken": "5fe799c3ab319b66b42de8b5",
+      "senderEmail": "user02@gmail.com",
+      "receiverEmail": "user03@gmail.com",
+      "adminEmail": "admin1@gmail.com",
+      "creditUnit": 15,
+      "createdTime": "2020-12-26T20:14:30.078Z"
+    },
+    {
+      "id": "user02@gmail.com",
+      "transactionToken": "5fe799c3ab319b66b42de8b6",
+      "senderEmail": "user02@gmail.com",
+      "receiverEmail": "user04@gmail.com",
+      "adminEmail": "admin1@gmail.com",
+      "creditUnit": 20,
+      "createdTime": "2020-12-26T20:14:59.079Z"
+    },
+    {
+      "id": "user02@gmail.com",
+      "transactionToken": "5fe799c3ab319b66b42de8b7",
+      "senderEmail": "user02@gmail.com",
+      "receiverEmail": "user05@gmail.com",
+      "adminEmail": "admin1@gmail.com",
+      "creditUnit": 35,
+      "createdTime": "2020-12-27T20:15:59.079Z"
+    }
+  ],
+  "orders": [
+    {
+      "_id": "5fe79d79d2110130a082db1d",
+      "buyerID": "user02@gmail.com",
+      "sellerID": "user02@gmail.com",
+      "itemID": "5fe794e7f13caa70d47c3f2e",
+      "quantity": 1,
+      "status": "Complete",
+      "transactionID": "5fe799c3ab319b66b42de8b5",
+      "address":"",
+      "city":"",
+      "province":"",
+      "country":"",
+      "postcode":"",
+      "taxPrice": 0,
+      "totalItemPrice": 0,
+      "shipingTrackingNumber": "",      
+      "__v": 0,
+      "createdAt": "2020-12-26T20:30:49.790Z",
+      "updatedAt": "2020-12-26T20:30:49.790Z"
+    }
+
+  ]
+}
+  

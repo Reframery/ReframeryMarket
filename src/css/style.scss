@@ -1,0 +1,116 @@
+//----------Landing page----------
+.hero {
+  background-image: url(../img/Friendship-Day.jpg);
+  background-size: cover;
+}
+
+.slogan-container {
+  margin-bottom: 3rem;
+}
+
+//----------footer-------------
+.footer-content {
+  padding-left: 15%;
+  padding-right: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+//------------cart page-----------
+.cart {
+  padding: 5rem 0;
+  height: 85vh;
+
+  .cart-items {
+    max-height: 70vh;
+    overflow: scroll;
+  }
+}
+
+.cart-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-top: 30vh;
+
+  .totals-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+  }
+}
+
+//-----------address form page----------
+
+.billing-container {
+  margin-top: 15%;
+}
+
+.address-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.address-form-container {
+  padding: 5rem 0;
+  height: 85vh;
+}
+
+//-------------confirmation page-----------
+.dl-horizontal {
+  margin: 0;
+  dt {
+    float: left;
+    width: 150px;
+    overflow: hidden;
+    clear: left;
+    text-align: right;
+  }
+  dd {
+    text-align: left;
+    margin-left: 30%;
+    overflow: scroll;
+  }
+}
+
+.confirm-container {
+  padding: 5rem 0;
+  height: 85vh;
+}
+
+.confirm-table {
+  height: 20vh;
+  overflow: scroll;
+}
+
+.confirm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-top: 25vh;
+
+  .totals-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+  }
+}
+
+//-------------Payment Page------------
+.payment-container {
+  padding: 5rem 0;
+  height: 85vh;
+}
