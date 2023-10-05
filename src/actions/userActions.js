@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import Axios from "../commons/axios";
 import auth from '../commons/auth';
 
 import {
@@ -37,8 +37,6 @@ import {
     USER_COUNT_UNVALIDATE_SUCCESS,
     USER_COUNT_UNVALIDATE_FAIL,
 } from '../constants/userConstants';
-
-Axios.defaults.baseURL = 'http://localhost:7564';
 
 //get the signin user info if the user sign in sucessfully and save it in local storage
 export const signin = (email, password) => async (dispatch) => {

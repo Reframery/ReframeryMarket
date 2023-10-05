@@ -19,7 +19,7 @@ export default function Header(props) {
 
   const userCommunity = (userInfo? userInfo.marketProfile.communityName : community);
 
-  const username =  userInfo.marketProfile.username
+  const username =  (userInfo ? userInfo.marketProfile.username : "")
 
   const signoutHandler = () => {
     const r = window.confirm("Do you want to Sign Out?");

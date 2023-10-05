@@ -28,8 +28,6 @@ import {
   DELETE_CART_FAIL,
 } from "constants/cartConstants";
 
-Axios.defaults.baseURL = "http://localhost:7564";
-
 // get a cart details
 export const getCart = () => async (dispatch) => {
   dispatch({ type: GET_CART_REQUEST });

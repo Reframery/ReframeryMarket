@@ -38,8 +38,6 @@ import {
 
 } from '../constants/itemConstants';
 
-Axios.defaults.baseURL = 'http://localhost:7564';
-
 
 // create an new item and send it to backend
 //xport const createItem = (category, name, price, userEmail, image, stock, description, discount, subCategoryID) => async (dispatch) => {
@@ -312,8 +310,7 @@ export const getNewestItemsOfProducts = (limit, communityName, category) => asyn
   dispatch({ type: NEWEST_ITEM_LIST_PRODUCTS_REQUEST });
   try {
     const { data } = await Axios.get(`/market/item/newest`, 
-    {'headers': await auth({}),
-     'params': {communityName, category, limit}
+    {'params': {communityName, category, limit}
     });
     dispatch({ type: NEWEST_ITEM_LIST_PRODUCTS_SUCCESS, payload: data });
   } catch (error) {
@@ -326,8 +323,7 @@ export const getNewestItemsOfServices = (limit, communityName, category) => asyn
   dispatch({ type: NEWEST_ITEM_LIST_SERVICES_REQUEST });
   try {
     const { data } = await Axios.get(`/market/item/newest`, 
-    {'headers': await auth({}),
-     'params': {communityName, category, limit}
+    {'params': {communityName, category, limit}
     });
     dispatch({ type: NEWEST_ITEM_LIST_SERVICES_SUCCESS, payload: data });
   } catch (error) {
@@ -340,8 +336,7 @@ export const getNewestItemsOfExpertises = (limit, communityName, category) => as
   dispatch({ type: NEWEST_ITEM_LIST_EXPERTISES_REQUEST });
   try {
     const { data } = await Axios.get(`/market/item/newest`, 
-    {'headers': await auth({}),
-     'params': {communityName, category, limit}
+    {'params': {communityName, category, limit}
     });
     dispatch({ type: NEWEST_ITEM_LIST_EXPERTISES_SUCCESS, payload: data });
   } catch (error) {
