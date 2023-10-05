@@ -71,7 +71,7 @@ export default function UpdateUserAddressPage() {
       const confirm = window.confirm("Are you sure to update your personal information?");
       if (confirm) {
         //if the input value for the field is empty, keep the original value of the field
-        dispatch(updateUserAddress(userInfo.email, address, city, province, country, postcode));
+        // dispatch(updateUserAddress(userInfo.email, address, city, province, country, postcode));
         navigate('/my-profile');
       }
     }

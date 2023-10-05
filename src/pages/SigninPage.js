@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { signin } from "actions/userActions";
 import WellcomeComponent from "components/WellcomeComponent";
 import Footer from 'components/Footer'
+import { isAdmin } from "commons/auth";
 
 export default function Signin(props) {
   const navigate = useNavigate();
@@ -22,11 +23,12 @@ export default function Signin(props) {
   useEffect(() => {
     // if the user sign in sucessfully, go to the redirect link
     if (userInfo) {
+      console.log("userInfo", userInfo)
       // props.history.push(redirect);
-      if (userInfo.admin || userInfo.manager) {
+      if (isAdmin(userInfo) || userInfo.manager) {
         navigate('/admin');
       } else {
-        navigate(`/${userInfo.communityName}`);
+        navigate(`/${userInfo.marketProfile.communityName}`);
       }
     }
   }, [navigate, userInfo]);

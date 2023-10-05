@@ -12,12 +12,12 @@ import { RegionDropdown } from 'react-country-region-selector';
 export default function CreateItemPage() {
     const navigate = useNavigate();
     const [itemname, setItemname] = useState('');
-    const [price, setPrice] = useState('');
-    const [stock, setStock] = useState('');
+    const [price, setPrice] = useState(0);
+    const [stock, setStock] = useState(0);
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
     const [subCategoryName, setSubcategory] = useState('');
-    const [discount, setDiscount] = useState('');
+    const [discount, setDiscount] = useState(0);
     const [imageURL, setImageURL] = useState('');
     const [clicked, setClicked] = useState(false);
     const [province, setProvince] = useState('');
@@ -33,7 +33,7 @@ export default function CreateItemPage() {
 
 
     const userEmail = userInfo.email;
-    const communityName = userInfo.communityName;
+    const communityName = userInfo.marketProfile.communityName;
     let type = null;
     let options = null;
 
@@ -77,7 +77,7 @@ export default function CreateItemPage() {
         e.preventDefault();
         const confirm = window.confirm("Are you sure to create this item for sale?");
         if (confirm) {
-            dispatch(createItem(itemname, category, subCategoryName, imageURL, userEmail, price, stock, description, discount, communityName, province, city));
+            dispatch(createItem(itemname, category, subCategoryName, imageURL, price, stock, description, discount, communityName, province, city));
         }
         setClicked(true);
 
@@ -113,7 +113,7 @@ export default function CreateItemPage() {
                                 <label className="label">Unit Price</label>
                                 <div className="field has-addons ">
                                     <div className="control">
-                                        <input type="number" className="input" placeholder="e.g. 35" value={price} required onChange={(e) => setPrice(e.target.value)} />
+                                        <input type="number" className="input" placeholder="e.g. 35" value={price} required onChange={(e) => setPrice(parseInt(e.target.value))} />
                                     </div>
 
                                     <div class="control">
@@ -133,7 +133,7 @@ export default function CreateItemPage() {
                                 <label className="label">Stock</label>
                                 <div className="field has-addons">
                                     <div className="control">
-                                        <input type="number" className="input" placeholder="e.g. 15" value={stock} required onChange={(e) => setStock(e.target.value)} />
+                                        <input type="number" className="input" placeholder="e.g. 15" value={stock} required onChange={(e) => setStock(parseInt(e.target.value))} />
                                     </div>
 
                                     <div class="control">
@@ -206,7 +206,7 @@ export default function CreateItemPage() {
                                 <label class="label">Discount</label>
                                 <div class="control">
                                     <div class="select">
-                                        <select value={discount} required onChange={(e) => setDiscount(e.target.value)}>
+                                        <select value={discount} required onChange={(e) => setDiscount(parseInt(e.target.value))}>
                                             <option value="-1">--</option>
                                             <option value="0">No discount available</option>
                                             <option value="1">Buy one get one free</option>

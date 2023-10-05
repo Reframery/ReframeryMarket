@@ -16,6 +16,8 @@ import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import userEvent from "@testing-library/user-event";
 import { getItem } from "actions/itemActions";
+import { isAdmin } from "commons/auth";
+import { getCart } from "actions/cartActions";
 
 
 
@@ -29,9 +31,13 @@ const Cart = () => {
     const userGet = useSelector(state => state.userGet);
     const { loading, error, user } = userGet;
 
+    const cartGet = useSelector(state => state.getCart);
+    const { loading: loadingCart, cart } = cartGet;
+
     useEffect(() => {
         dispatch(getUser(userInfo.email));
-      }, [dispatch, userInfo]);
+        dispatch(getCart());
+    }, [dispatch, userInfo]);
     
     // function to update amount (after receiving calls from the CartCard component)
     const updateAmount = (id, _amount) => {
@@ -71,7 +77,7 @@ const Cart = () => {
 
     return (
     <div>
-        {loading ? (
+        {loading || loadingCart ? (
           <LoadingBox></LoadingBox>
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
@@ -79,22 +85,17 @@ const Cart = () => {
                 <div className="container cart">
                     <div className="columns">
                         <div className="column is-one-quarter">
-                            {userInfo.admin? <AdminSideBar /> : <SideBar/>} 
+                            {isAdmin(userInfo)? <AdminSideBar /> : <SideBar/>} 
                         </div>
 
                         <div className="column　is-half cart-body">
                             <h1 className="title is-1">Shopping Cart</h1>
-                            <progress class="progress" value="25" max="100">25%</progress>       
+                            <progress className="progress" value="25" max="100">25%</progress>       
                         </div>
-
-                        <div className="column is-one-quarter">
-                            List of your shopping carts:
-                            <div className="button is-info">Default Shopping Cart</div>
-                            <div className="button is-info">Customized Shopping Cart 01</div>
-                            <div className="button is-info">Customized Shopping Cart 02</div>
-                            <div className="button is-info">Customized Shopping Cart 03</div>
-                            <div className="button is-info">Customized Shopping Cart 04</div>
-
+                        <div>
+                            {cart.map((item) => ( 
+                                <p>{item.id}</p>
+                            ))}
                         </div>
                     </div>
                 </div>

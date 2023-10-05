@@ -28,7 +28,7 @@ function Currency() {
                         <h3>Your current balance</h3> 
                 </div>
                 <div className="currency-box">
-                    <h1>${userInfo.currentCredit}</h1>
+                    <h1>${userInfo.marketProfile.currentCredit}</h1>
                 </div>
             </div>)}
         </div> 

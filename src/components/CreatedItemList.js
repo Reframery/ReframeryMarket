@@ -17,16 +17,13 @@ export default function CreatedItemList({ mainCategory }) {
     //userInfo.communityName
 
     useEffect(() => {
-        dispatch(getItemsOfUser(userInfo.email, 100, 1, true));
-    }, [dispatch, userInfo.email]);
+        dispatch(getItemsOfUser(100, 1, true));
+    }, [dispatch, userInfo]);
 
     //console.log("Data " + items);
     //const loweredCate = mainCategory.toLowerCase();
     //console.log("Items: " + items);
     //const filtereditems = items[loweredCate];
-
-
-
 
     return (
 

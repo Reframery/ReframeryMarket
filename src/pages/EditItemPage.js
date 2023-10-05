@@ -18,19 +18,19 @@ export default function EditItemPage() {
     const { id } = useParams();
     const dispatch = useDispatch();
     const [itemname, setItemname] = useState('');
-    const [price, setPrice] = useState('');
-    const [stock, setStock] = useState('');
+    const [price, setPrice] = useState(0);
+    const [stock, setStock] = useState(0);
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
     const [subCategoryName, setSubcategory] = useState('');
-    const [discount, setDiscount] = useState('');
+    const [discount, setDiscount] = useState(0);
     const [imageURL, setImageURL] = useState('');
     const [province, setProvince] = useState('');
     const [city, setCity] = useState('');
 
     const userSignin = useSelector(state => state.userSignin);
     const { userInfo } = userSignin;
-    const communityName = userInfo.communityName;
+    const communityName = userInfo.marketProfile.communityName;
 
     const itemGet = useSelector((state) => state.itemGet);
     const { loading, error, item } = itemGet;
@@ -140,7 +140,7 @@ export default function EditItemPage() {
                                 <div className="field">
                                     <label className="label">Item Name</label>
                                     <div className="control">
-                                        <input type="text" className="input" defaultValue={item.name} required onChange={(e) => setItemname(e.target.value)} />
+                                        <input type="text" className="input" defaultValue={item.itemName} required onChange={(e) => setItemname(e.target.value)} />
                                     </div>
                                     <p class="help">Should not exceed 15 characters</p>
 
@@ -156,7 +156,7 @@ export default function EditItemPage() {
                                     <label className="label">Unit Price</label>
                                     <div className="field has-addons ">
                                         <div className="control">
-                                            <input type="number" className="input" defaultValue={item.price} required onChange={(e) => setPrice(e.target.value)} />
+                                            <input type="number" className="input" defaultValue={item.unitPrice} required onChange={(e) => setPrice(parseInt(e.target.value))} />
                                         </div>
 
                                         <div class="control">
@@ -176,7 +176,7 @@ export default function EditItemPage() {
                                     <label className="label">Stock</label>
                                     <div className="field has-addons">
                                         <div className="control">
-                                            <input type="number" className="input" defaultValue={item.stock} required onChange={(e) => setStock(e.target.value)} />
+                                            <input type="number" className="input" defaultValue={item.stock} required onChange={(e) => setStock(parseInt(e.target.value))} />
                                         </div>
 
                                         <div class="control">
@@ -219,7 +219,7 @@ export default function EditItemPage() {
                                     <div className="field has-addons">
                                         <div class="control">
                                             <div class="select">
-                                                <select defaultValue={item.subCategoryName} required onChange={(e) => setSubcategory(e.target.value)}>
+                                                <select defaultValue={item.subcategory} required onChange={(e) => setSubcategory(e.target.value)}>
                                                     <option value="-1">--</option>
                                                     {options}
                                                 </select>
@@ -251,7 +251,7 @@ export default function EditItemPage() {
                                     <label class="label">Discount</label>
                                     <div class="control">
                                         <div class="select">
-                                            <select defaultValue={item.discount} required onChange={(e) => setDiscount(e.target.value)} >
+                                            <select defaultValue={item.discount} required onChange={(e) => setDiscount(parseInt(e.target.value))} >
                                                 <option value="-1">--</option>
                                                 <option value="0">No discount available</option>
                                                 <option value="1">Buy one get one free</option>
@@ -270,8 +270,8 @@ export default function EditItemPage() {
                                     <label className="label">Item Image</label>
                                     <div className="control">
 
-                                        <img src={item.imageURL} alt="Image"></img>
-                                        <input type="text" className="input" defaultValue={item.imageURL} required onChange={(e) => setImageURL(e.target.value)} />
+                                        <img src={item.itemImage} alt="Image"></img>
+                                        <input type="text" className="input" defaultValue={item.itemImage} required onChange={(e) => setImageURL(e.target.value)} />
                                         <button onClick={(e) => update(e, 8, imageURL)} className="button is-link is-outlined">Update</button>
 
                                     </div>

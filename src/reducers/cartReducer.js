@@ -41,7 +41,7 @@ export const createCartReducer = (state = {}, action) => {
 }
 
 // get cart details
-export const getCartReducer = (state = { loading: true, cart: {} }, action) => {
+export const getCartReducer = (state = {}, action) => {
     switch (action.type) {
         case GET_CART_REQUEST:
             return { loading: true };

@@ -20,10 +20,6 @@ import {
     TRANSACTION_OF_USER_GET_FAIL    
 } from '../constants/transactionConstants';
 
-Axios.defaults.auth = {
-    username: 'access_key_admin',
-    password: 'secret_key_hush',
-};
 
 // create a transaction
 export const createTransaction = (senderEmail, receiverEmail, creditUnit, transactionToken) => async (dispatch) => {

@@ -3,7 +3,7 @@ import Header from 'components/Header';
 import SideBar from "components/AdminSidebar";
 import Footer from 'components/Footer'
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "actions/userActions";
+import { getUserByEmail } from "actions/userActions";
 import { useNavigate } from "react-router";
 
 export default function UpdateBalancePage() {
@@ -21,7 +21,7 @@ export default function UpdateBalancePage() {
     const searchUserHandler = (e) => {
         e.preventDefault();
         setSearched(true);
-        dispatch(getUser(searchUserEmail));
+        dispatch(getUserByEmail(searchUserEmail));
     };
 
     useEffect(() => {
@@ -46,7 +46,7 @@ export default function UpdateBalancePage() {
                                     <div className="column is-one-quater"><button className="button is-primary is-rounded" onClick={searchUserHandler}> <span>Search</span></button></div>
                                 </div>
                                 {/* if the user is not valid user, show the error message */}
-                                {error ? <div className="danger">! Invalid email address or the user does not exists </div> : null}
+                                {error ? <div className="danger">{error} </div> : null}
                             </div>
                         </div>
                     </div>

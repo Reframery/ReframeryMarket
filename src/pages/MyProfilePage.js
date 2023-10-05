@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from "react-router";
 import {
-  deleteUser, getUser, signout, updateUserName,
-  updateUserCompany, updateUserPassword, updateUserPhone,
-  updateUserFirstName, updateUserLastName, updateUserBirthday, updateUserImage
+  deleteUser, getUser, signout, updateProfile
 } from "../actions/userActions";
 import Header from 'components/Header';
 import SideBar from "components/SideBar";
@@ -69,41 +67,6 @@ export default function MyProfilePage() {
     return reContainUppercase.test(str) && reContainLowercase.test(str) && reContainNumer.test(str) && reLength.test(str)
   }
 
-  // function for uploading the image of the user
-  const uploadimageHandler = (e) => {
-    e.preventDefault();
-    /**
-    var fileName = e.target.value;
-    var idxDot = fileName.lastIndexOf(".") + 1;
-    var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
-    if (extFile === "jpg" || extFile === "png") {
-      // console.log("file to upload:", e.target.files[0]);
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.readAsBinaryString(file);
-        reader.onloadend = () => {
-          setBinaryImage(reader.result);
-          // console.log(reader.result);
-        }
-      }
-    } else {
-      alert("Only jpg and png files are allowed!");
-    }
-    const confirm = window.confirm("Are you sure to update your image?");
-    if (confirm) {
-      dispatch(updateUserImage(userInfo.email, binaryImage));
-    }
-     */
-
-    if (userImageURL === "") {
-      setErrorMessage("! Empty input");
-    } else {
-      dispatch(updateUserImage(userInfo.email, userImageURL));
-    }
-
-  };
-
   //update user name 
   const updateUserNameHandler = (e) => {
     e.preventDefault();
@@ -113,7 +76,7 @@ export default function MyProfilePage() {
       setErrorMessage("! Your user name should not exceed 15 characters");
     }
     else {
-      dispatch(updateUserName(userInfo.email, username));
+      dispatch(updateProfile({username: username}));
     }
   };
 
@@ -123,20 +86,7 @@ export default function MyProfilePage() {
     if (company === "") {
       setErrorMessage("! Empty input");
     } else {
-      dispatch(updateUserCompany(userInfo.email, company));
-    }
-  };
-
-  //update user password
-  const updateUserPasswordHandler = (e) => {
-    e.preventDefault();
-    if (password === "") {
-      setErrorMessage("! Empty input");
-    } else if (!isValidPassword(password)) {
-      setErrorMessage("! You new password should be at least 6 characters and contains at least one uppercase, one lowercase and a number");
-    }
-    else {
-      dispatch(updateUserPassword(userInfo.email, password));
+      dispatch(updateProfile({company: company}));
     }
   };
 
@@ -150,7 +100,7 @@ export default function MyProfilePage() {
       setErrorMessage("! Invalid phone number");
     }
     else {
-      dispatch(updateUserPhone(userInfo.email, phoneNumber));
+      dispatch(updateProfile({phone: phoneNumber}));
     }
   };
 
@@ -160,7 +110,7 @@ export default function MyProfilePage() {
     if (firstName === "") {
       setErrorMessage("! Empty input");
     } else {
-      dispatch(updateUserFirstName(userInfo.email, firstName));
+      dispatch(updateProfile({firstName: firstName}));
     }
   };
 
@@ -170,7 +120,7 @@ export default function MyProfilePage() {
     if (lastName === "") {
       setErrorMessage("! Empty input");
     } else {
-      dispatch(updateUserLastName(userInfo.email, lastName));
+      dispatch(updateProfile({lastName: lastName}));
     }
   };
 
@@ -185,7 +135,7 @@ export default function MyProfilePage() {
         setErrorMessage("! Invalid birthday");
     }
     else {
-      dispatch(updateUserBirthday(userInfo.email, birthday));
+      dispatch(updateProfile({dob: birthday}));
     }
   };
 
@@ -206,11 +156,14 @@ export default function MyProfilePage() {
   };
 
   useEffect(() => {
-    dispatch(getUser(userInfo.email));
+    dispatch(getUser());
     if (updatedUser || updatedUserImage) {
       window.location.reload();
+      localStorage.setItem('username', updatedUser.username);
     }
   }, [dispatch, userInfo, updatedUser, updatedUserImage]);
+
+  const email  = JSON.parse(localStorage.getItem('userInfo')).email;
 
   return (
     <div className="page-container">
@@ -227,29 +180,6 @@ export default function MyProfilePage() {
               <form className="form-profile" >
                 <div className="danger">{erroMessage}</div>
                 <div className="title-image">
-                  <div className="upload-image">
-                    <img
-                      src={user.userImage ? user.userImage : "/images/blank.png"}
-                      alt="user"
-                      width="150"
-                    ></img >
-                    {/* We use a temporary jason server as our backend database and we can not send the binary image
-                     to the server, we will require user to enter an url for the uploaded image instead of upload image from local folder */}
-                    {/* <div className="upload-button">
-                          <div className="fileinputs">
-                            <input type="file" className="file" id="file" accept=".jpg,.png"
-                              onChange={uploadimageHandler} onClick={e => (e.target.value = null)} />
-                            <div className="fakefile">
-                              <input placeholder="Upload Image" />
-                            </div>
-                          </div>
-                        </div> */}
-                    <div>
-                      <input id="userImage" type="text" placeholder="Upload Image" onChange={(e) => setUserImageURL(e.target.value)} />
-                      <button onClick={uploadimageHandler}> Update</button>
-                      {/* <p className="help">Please upload the image on hosting service, copy and paste the image URL back to the input field.</p> */}
-                    </div>
-                  </div>
                   <h1>My Profile</h1>
                 </div>
 
@@ -257,34 +187,24 @@ export default function MyProfilePage() {
                 <div className="profile-row">
                   <div>
                     <label >Email</label>
-                    <input id="email" type="email" placeholder={user.email} readOnly></input>
+                    <input id="email" type="email" placeholder={email} readOnly></input>
                   </div>
                   <div>
                     <label>User Name</label>
                     <input id="username" type="text" placeholder={user.username} onChange={(e) => setUsername(e.target.value)}></input>
                     <button onClick={updateUserNameHandler}> Update</button>
-                  </div>
-                  {user.admin ?  null: <div>
-                    <label>Company Name</label>
-                    <input id="companyName" type="text" placeholder={user.company} onChange={(e) => setCompany(e.target.value)}></input>
-                    <button onClick={updateCompanyNameHandler}> Update</button>
-                  </div>}                  
-                  <div>
-                    <label>Password</label>
-                    <input id="password" type="password" placeholder="******" onChange={(e) => setPassword(e.target.value)}></input>
-                    <button onClick={updateUserPasswordHandler}>Update</button>
-                  </div>
+                  </div>               
                   <div>
                     <label >Phone</label>
-                    <PhoneInput placeholder={user.phoneNumber} onChange={setPhoneNumber} />
+                    <PhoneInput placeholder={user.phone} onChange={setPhoneNumber} />
                     {user.phoneNumber === "" ? (<button onClick={updateUserPhoneHandler}>Add</button>) :
                       (<button onClick={updateUserPhoneHandler}>Update</button>)}
                   </div>
                   <div>
                     <label >Address</label>
                     <input id="address" type="text"
-                      placeholder={user.address + " " + user.city + " "
-                        + user.province + " " + user.postcode + ", " + user.country} >
+                      placeholder={user.addressLine1  + " " + user.addressLine2 + " " + user.city + " "
+                        + user.region + " " + user.postalCode + ", " + user.countryId} >
                     </input>
                     {user.address === "" ? (<Link to="/update-user-address"><button>Add</button></Link>) :
                       (<Link to="/update-user-address"><button >Update</button></Link>)}
@@ -303,13 +223,13 @@ export default function MyProfilePage() {
                   </div>
                   <div>
                     <label >Birthday</label>
-                    <input id="birthday" type="text" onFocus={(e) => (e.currentTarget.type = "date")} onBlur={(e) => (e.currentTarget.type = "text")} placeholder={user.birthday} onChange={(e) => setBirthday(e.target.value)}></input>
+                    <input id="birthday" type="text" onFocus={(e) => (e.currentTarget.type = "date")} onBlur={(e) => (e.currentTarget.type = "text")} placeholder={user.dob ? user.dob.slice(0, 10): ""} onChange={(e) => setBirthday(e.target.value)}></input>
                     {user.birthday === "" ? (<button onClick={updateUserBirthdayHandler}>Add</button>) :
                       (<button onClick={updateUserBirthdayHandler}>Update</button>)}
                   </div>
                   <div>
                     <label >Register Time</label>
-                    <input id="registerTime" placeholder={user.registerTime.slice(0, 10)} readOnly></input>
+                    <input id="registerTime" placeholder={user.createdAt.slice(0, 10)} readOnly></input>
                     <button onClick={deleteHandler} >Unsubscribe</button>
                   </div>
                 </div>

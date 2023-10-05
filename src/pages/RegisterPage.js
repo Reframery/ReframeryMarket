@@ -58,8 +58,6 @@ export default function Register() {
             if (confirm) {
                 //create a new user record
                 dispatch(createUser(username, email, password, communityName));
-                //create a shopping cart for the user
-                dispatch(createCart(email, "default cart"));
                 navigate(redirect);
             }
         }

@@ -1,22 +1,26 @@
-import React from "react";
+import React, { useEffect, useLayoutEffect,  } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import { useSelector, useDispatch } from 'react-redux';
 import { signout } from '../actions/userActions'
+import { getUser } from "../actions/userActions";
+import { isAdmin } from "commons/auth"
 
 export default function Header(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const currentPath = window.location.pathname;
-  const { community, cartNum } = props;
-  console.log(cartNum); 
+  const { community } = props;
+  // console.log(cartNum); 
 
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } = userSignin;
 
-  const userCommunity = (userInfo? userInfo.communityName : community);
-  
+  const userCommunity = (userInfo? userInfo.marketProfile.communityName : community);
+
+  const username =  userInfo.marketProfile.username
+
   const signoutHandler = () => {
     const r = window.confirm("Do you want to Sign Out?");
     if (r) {
@@ -25,6 +29,7 @@ export default function Header(props) {
       window.location.reload();
     }
   }
+
   return (
     <header >
       <div className="header-container">
@@ -46,11 +51,11 @@ export default function Header(props) {
             userInfo ? (
               <div className="dropdown">
                 {
-                  userInfo.admin ?
+                  isAdmin(userInfo) ?
                     (
-                      <Link to="/admin" className="nav-item">{userInfo.username} <i className="fa fa-caret-down"></i></Link>
+                      <Link to="/admin" className="nav-item">{username} <i className="fa fa-caret-down"></i></Link>
                     ) : (
-                      <Link to={"/" + userCommunity +"/products"}  className="nav-item">{userInfo.username} <i className="fa fa-caret-down"></i></Link>)
+                      <Link to={"/" + userCommunity +"/products"}  className="nav-item">{username} <i className="fa fa-caret-down"></i></Link>)
                 }
                 <ul className="dropdown-content" >
                   <Link className="link" to={currentPath} onClick={signoutHandler}>Sign out</Link>

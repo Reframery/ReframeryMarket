@@ -9,6 +9,7 @@ import Footer from 'components/Footer'
 import { getNewestItemsOfProducts, getNewestItemsOfServices, getNewestItemsOfExpertises } from "actions/itemActions";
 import LoadingBox from "components/LoadingBox";
 import MessageBox from "components/MessageBox";
+import { isAdmin } from "../commons/auth";
 
 
 export default function Itemspage() {
@@ -65,7 +66,7 @@ export default function Itemspage() {
           }
           {/* The sidebar is shown when the user sign in */}
           <div className="sidebar-content">
-            {userInfo ? (userInfo.admin ? null : <SideBar />) : null}
+            {userInfo ? (isAdmin(userInfo) ? null : <SideBar />) : null}
 
             <section className="container">
               <div>

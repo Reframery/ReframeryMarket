@@ -13,22 +13,22 @@ export default function Item(props) {
                         "/" + community + "/expertises/" + item.id)}>
                     <img
                         className="item-image"
-                        src={item.imageURL}
-                        alt={item.name}
+                        src={item.itemImage}
+                        alt={item.itemName}
                     ></img>
                 </Link>
             </div>
             <div className="item-info">
                 <div className="item-name">
-                    <Link to={(category === "Products") ? "/" + community + "/products/" + item.id :
-                        (category === "Services") ? "/" + community + "/services/" + item.id :
+                    <Link to={(category === "products") ? "/" + community + "/products/" + item.id :
+                        (category === "services") ? "/" + community + "/services/" + item.id :
                             "/" + community + "/expertises/" + item.id}>
-                        <span className="link">{item.name}</span>
+                        <span className="link">{item.itemName}</span>
                     </Link>
                 </div>
-                <div className="item-price">${item.price}</div>
+                <div className="item-price">${item.unitPrice}</div>
                 <div className="item-rating"><Rating rating={item.averageRating} numOfReviews={item.numberOfFeedbacks}></Rating></div>
-                <div className="item-city">{item.city}, {item.province}</div>
+                <div className="item-city">{item.city} {item.province}</div>
             </div>
         </div>
     )

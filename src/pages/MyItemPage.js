@@ -16,7 +16,7 @@ export default function MyItemPage() {
         <div className="container">
           <div className="item-main">
             <div className="myitems-header">
-              <Link to="/create-item" className="link">Create Item >></Link>
+              <Link to="/create-item" className="link">Create Item </Link>
             </div>
             <div className="list-products" >
               <CreatedItemList />

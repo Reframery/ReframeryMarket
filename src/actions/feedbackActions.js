@@ -15,12 +15,6 @@ import {
     GET_RATER_FEEDBACKS_FAIL
 } from "constants/feedbackConstants";
 
-// api authentication
-Axios.defaults.auth = {
-    username: 'access_key_admin',
-    password: 'secret_key_hush',
-};
-
 // function to create a feedback record
 export const createFeedback = (itemID, userEmail, raterEmail, rating, description) => async (dispatch) => {
     dispatch({ type: FEEDBACK_CREATE_REQUEST, payload: { itemID, userEmail, raterEmail, rating, description }});

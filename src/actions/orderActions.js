@@ -18,11 +18,6 @@ import {
     GET_SELLER_ORDERS_FAIL
 } from "constants/orderConstants";
 
-Axios.defaults.auth = {
-    username: 'access_key_admin',
-    password: 'secret_key_hush',
-  };
-
 // function to create an order with given attributes
 export const createUser = (buyerEmail, sellerEmail, itemID, quantity, status, address, city, province, country, postcode, totalItemPrice, taxPrice) => async (dispatch) => {
 dispatch({ type: ORDER_CREATE_REQUEST, payload: { buyerEmail, sellerEmail, itemID, quantity, status, address, city, province, country, postcode, totalItemPrice, taxPrice} });

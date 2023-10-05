@@ -25,30 +25,30 @@ export default function CreatedItem(props) {
 
     return (
         <div className="item">
-            {userInfo ? (<Link to={item.id}>
+            {userInfo ? (<Link to={`./${item.id}`}>
                 <img
                     className="item-image"
-                    src={item.imageURL}
-                    alt={item.name}
+                    src={item.itemImage}
+                    alt={item.itemName}
                 ></img>
             </Link>) : (<Link to="/signin">
                 <img
                     className="item-image"
-                    src={item.imageURL}
-                    alt={item.name}
+                    src={item.itemImage}
+                    alt={item.itemName}
                 ></img>
             </Link>)}
 
             <div className="item-info">
                 <form>
                     <h2>
-                        {userInfo ? (<Link to={item.id}>
-                            <span className="link">{item.name.toUpperCase()}</span>
+                        {userInfo ? (<Link to={`./${item.id}`}>
+                            <span className="link">{item.itemName.toUpperCase()}</span>
                         </Link>) : (<Link to="/signin">
-                            <span className="link">{item.name.toUpperCase()}</span>
+                            <span className="link">{item.itemName.toUpperCase()}</span>
                         </Link>)}
                     </h2>
-                    <div className="item-price">${item.price}</div>
+                    <div className="item-price">${item.unitPrice}</div>
                     <button
                         type="submit"
                         className="button is-primary"

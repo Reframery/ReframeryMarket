@@ -1,4 +1,5 @@
-import Axios from 'axios';
+import Axios from "../commons/axios";
+import auth from '../commons/auth';
 
 import {
   ITEM_LIST_CATEGORY_REQUEST,
@@ -37,21 +38,19 @@ import {
 
 } from '../constants/itemConstants';
 
-Axios.defaults.auth = {
-  username: 'access_key_admin',
-  password: 'secret_key_hush',
-};
-
-Axios.defaults.baseURL = 'http://localhost:4000';
+Axios.defaults.baseURL = 'http://localhost:7564';
 
 
 // create an new item and send it to backend
 //xport const createItem = (category, name, price, userEmail, image, stock, description, discount, subCategoryID) => async (dispatch) => {
-export const createItem = (name, category, subCategoryName, imageURL, userEmail, price, stock, description, discount, communityName, province, city) => async (dispatch) => {
+export const createItem = (itemName, category, subcategory, itemImage, unitPrice, stock, description, discount, communityName, province, city) => async (dispatch) => {
 
-  dispatch({ type: ITEM_CREATE_REQUEST, payload: { name, category, subCategoryName, imageURL, userEmail, price, stock, description, discount, communityName, province, city } });
+  dispatch({ type: ITEM_CREATE_REQUEST, payload: { itemName, category, subcategory, itemImage, unitPrice, stock, description, discount, communityName, province, city } });
   try {
-    const { data } = await Axios.post('/items/item', { name, category, subCategoryName, imageURL, userEmail, price, stock, description, discount, communityName, province, city });
+    const { data } = await Axios.post(`/market/item/add`,
+    { itemName, category, subcategory, itemImage, unitPrice, stock, description, discount, communityName, province, city },
+    {'headers': await auth({})});
+    // const { data } = await Axios.post('/items/item', { name, category, subCategoryName, imageURL, userEmail, price, stock, description, discount, communityName, province, city });
     dispatch({ type: ITEM_CREATE_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -84,14 +83,15 @@ export const updateItem = (itemID, name, category, subCategoryName, imageURL, us
   }
 };
 
-export const updateItemName = (itemID, name
+export const updateItemName = (itemID, itemName
 ) => async (dispatch) => {
   dispatch({ type: ITEM_UPDATE_REQUEST, payload: itemID });
   try {
-    const { data } = await Axios.patch(`/items/item/${itemID}`,
+    const { data } = await Axios.put(`/market/item/update/${itemID}`,
       {
-        itemID, name
-      }
+        itemName
+      },
+      {'headers': await auth({})}
     );
     dispatch({ type: ITEM_UPDATE_SUCCESS, payload: data });
   } catch (error) {
@@ -104,14 +104,15 @@ export const updateItemName = (itemID, name
   }
 };
 
-export const updateItemPrice = (itemID, price
+export const updateItemPrice = (itemID, unitPrice
 ) => async (dispatch) => {
   dispatch({ type: ITEM_UPDATE_REQUEST, payload: itemID });
   try {
-    const { data } = await Axios.patch(`/items/item/${itemID}`,
+    const { data } = await Axios.put(`/market/item/update/${itemID}`,
       {
-        itemID, price
-      }
+        unitPrice
+      },
+      {'headers': await auth({})}
     );
     dispatch({ type: ITEM_UPDATE_SUCCESS, payload: data });
   } catch (error) {
@@ -128,10 +129,11 @@ export const updateItemStock = (itemID, stock
 ) => async (dispatch) => {
   dispatch({ type: ITEM_UPDATE_REQUEST, payload: itemID });
   try {
-    const { data } = await Axios.patch(`/items/item/${itemID}`,
+    const { data } = await Axios.put(`/market/item/update/${itemID}`,
       {
-        itemID, stock
-      }
+        stock
+      },
+      {'headers': await auth({})}
     );
     dispatch({ type: ITEM_UPDATE_SUCCESS, payload: data });
   } catch (error) {
@@ -149,10 +151,11 @@ export const updateItemDescription = (itemID, description
 ) => async (dispatch) => {
   dispatch({ type: ITEM_UPDATE_REQUEST, payload: itemID });
   try {
-    const { data } = await Axios.patch(`/items/item/${itemID}`,
+    const { data } = await Axios.put(`/market/item/update/${itemID}`,
       {
-        itemID, description
-      }
+        description
+      },
+      {'headers': await auth({})}
     );
     dispatch({ type: ITEM_UPDATE_SUCCESS, payload: data });
   } catch (error) {
@@ -169,10 +172,11 @@ export const updateItemCategory = (itemID, category
   ) => async (dispatch) => {
     dispatch({ type: ITEM_UPDATE_REQUEST, payload: itemID });
     try {
-      const { data } = await Axios.patch(`/items/item/${itemID}`,
+      const { data } = await Axios.put(`/market/item/update/${itemID}`,
         {
-          itemID, category
-        }
+          category
+        },
+        {'headers': await auth({})}
       );
       dispatch({ type: ITEM_UPDATE_SUCCESS, payload: data });
     } catch (error) {
@@ -185,14 +189,15 @@ export const updateItemCategory = (itemID, category
     }
   };
 
-  export const updateItemSubcategory = (itemID, subCategoryName
+  export const updateItemSubcategory = (itemID, subcategory
     ) => async (dispatch) => {
       dispatch({ type: ITEM_UPDATE_REQUEST, payload: itemID });
       try {
-        const { data } = await Axios.patch(`/items/item/${itemID}`,
+        const { data } = await Axios.put(`/market/item/update/${itemID}`,
           {
-            itemID, subCategoryName
-          }
+            subcategory
+          },
+          {'headers': await auth({})}
         );
         dispatch({ type: ITEM_UPDATE_SUCCESS, payload: data });
       } catch (error) {
@@ -209,10 +214,11 @@ export const updateItemCategory = (itemID, category
     ) => async (dispatch) => {
       dispatch({ type: ITEM_UPDATE_REQUEST, payload: itemID });
       try {
-        const { data } = await Axios.patch(`/items/item/${itemID}`,
+        const { data } = await Axios.put(`/market/item/update/${itemID}`,
           {
-            itemID, province, city
-          }
+            province, city
+          },
+          {'headers': await auth({})}
         );
         dispatch({ type: ITEM_UPDATE_SUCCESS, payload: data });
       } catch (error) {
@@ -231,10 +237,11 @@ export const updateItemCategory = (itemID, category
     ) => async (dispatch) => {
       dispatch({ type: ITEM_UPDATE_REQUEST, payload: itemID });
       try {
-        const { data } = await Axios.patch(`/items/item/${itemID}`,
+        const { data } = await Axios.put(`/market/item/update/${itemID}`,
           {
-            itemID, discount
-          }
+            discount
+          },
+          {'headers': await auth({})}
         );
         dispatch({ type: ITEM_UPDATE_SUCCESS, payload: data });
       } catch (error) {
@@ -249,13 +256,14 @@ export const updateItemCategory = (itemID, category
 
 
 //update an item image
-export const updateItemImage = (itemID, imageURL) => async (dispatch) => {
+export const updateItemImage = (itemID, itemImage) => async (dispatch) => {
   dispatch({ type: ITEM_UPDATE_IMAGE_REQUEST, payload: itemID });
   try {
-    const { data } = await Axios.patch(`/items/item/${itemID}`,
+    const { data } = await Axios.put(`/market/item/update/${itemID}`,
       {
-        itemID, imageURL
-      }
+        itemImage
+      },
+      {'headers': await auth({})}
     );
     dispatch({ type: ITEM_UPDATE_IMAGE_SUCCESS, payload: data });
   } catch (error) {
@@ -272,7 +280,9 @@ export const updateItemImage = (itemID, imageURL) => async (dispatch) => {
 export const deleteItem = (itemID) => async (dispatch) => {
   dispatch({ type: ITEM_DELETE_REQUEST, payload: itemID });
   try {
-    const { data } = await Axios.delete(`/items/item/${itemID}`);
+    const { data } = await Axios.delete(`/market/item/${itemID}`, 
+    {'headers': await auth({})
+    });
     dispatch({ type: ITEM_DELETE_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -288,7 +298,9 @@ export const deleteItem = (itemID) => async (dispatch) => {
 export const getItem = (itemID) => async (dispatch) => {
   dispatch({ type: ITEM_GET_REQUEST, payload: itemID });
   try {
-    const { data } = await Axios.get(`/items/item/${itemID}`);
+    const { data } = await Axios.get(`/market/item/${itemID}`, 
+    {'headers': await auth({})
+    });
     dispatch({ type: ITEM_GET_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: ITEM_GET_FAIL, payload: error.message });
@@ -299,7 +311,10 @@ export const getItem = (itemID) => async (dispatch) => {
 export const getNewestItemsOfProducts = (limit, communityName, category) => async (dispatch) => {
   dispatch({ type: NEWEST_ITEM_LIST_PRODUCTS_REQUEST });
   try {
-    const { data } = await Axios.get(`/items/newestItems/${communityName}-${limit}?category=${category}`);
+    const { data } = await Axios.get(`/market/item/newest`, 
+    {'headers': await auth({}),
+     'params': {communityName, category, limit}
+    });
     dispatch({ type: NEWEST_ITEM_LIST_PRODUCTS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: NEWEST_ITEM_LIST_PRODUCTS_FAIL, payload: error.message });
@@ -310,7 +325,10 @@ export const getNewestItemsOfProducts = (limit, communityName, category) => asyn
 export const getNewestItemsOfServices = (limit, communityName, category) => async (dispatch) => {
   dispatch({ type: NEWEST_ITEM_LIST_SERVICES_REQUEST });
   try {
-    const { data } = await Axios.get(`/items/newestItems/${communityName}-${limit}?category=${category}`);
+    const { data } = await Axios.get(`/market/item/newest`, 
+    {'headers': await auth({}),
+     'params': {communityName, category, limit}
+    });
     dispatch({ type: NEWEST_ITEM_LIST_SERVICES_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: NEWEST_ITEM_LIST_SERVICES_FAIL, payload: error.message });
@@ -321,7 +339,10 @@ export const getNewestItemsOfServices = (limit, communityName, category) => asyn
 export const getNewestItemsOfExpertises = (limit, communityName, category) => async (dispatch) => {
   dispatch({ type: NEWEST_ITEM_LIST_EXPERTISES_REQUEST });
   try {
-    const { data } = await Axios.get(`/items/newestItems/${communityName}-${limit}?category=${category}`);
+    const { data } = await Axios.get(`/market/item/newest`, 
+    {'headers': await auth({}),
+     'params': {communityName, category, limit}
+    });
     dispatch({ type: NEWEST_ITEM_LIST_EXPERTISES_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: NEWEST_ITEM_LIST_EXPERTISES_FAIL, payload: error.message });
@@ -332,19 +353,26 @@ export const getNewestItemsOfExpertises = (limit, communityName, category) => as
 export const getItemsOfCategory = (category, limit, page, reversed, communityName) => async (dispatch) => {
   dispatch({ type: ITEM_LIST_CATEGORY_REQUEST });
   try {
-    const { data } = await Axios.get(`/items/itemsOfCategory/${category}-${limit}-${page}-${reversed}-${communityName}`);
+    const { data } = await Axios.get(`/market/item/category`, 
+    {'headers': await auth({}),
+     'params': {communityName, category, limit}
+    });
     dispatch({ type: ITEM_LIST_CATEGORY_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: ITEM_LIST_CATEGORY_FAIL, payload: error.message });
   }
 };
 
-// fetch alist of itmes for a giving user from backend
-export const getItemsOfUser = (userEmail, limit, page, reversed) => async (dispatch) => {
+// fetch a list of itmes for a giving user from backend
+export const getItemsOfUser = (limit, page, reversed) => async (dispatch) => {
   dispatch({ type: ITEM_LIST_USER_REQUEST });
 
   try {
-    const { data } = await Axios.get(`/items/itemsOfUser/${userEmail}-${limit}-${page}-${reversed}`);
+    const { data } = await Axios.get(`/market/item/userItem`, 
+    {'headers': await auth({}),
+     'params': {limit}
+    });
+    console.log(data)
     dispatch({ type: ITEM_LIST_USER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: ITEM_LIST_USER_FAIL, payload: error.message });

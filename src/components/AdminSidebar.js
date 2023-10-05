@@ -20,8 +20,7 @@ export default function AdminSidebar() {
                         <Link to="/admin"><div className="link my-3" > My Admin</div></Link>
                         <Link to="/admin/awaiting-validation"><div className="link my-3">Awaiting Validation</div></Link>
                         {/* The following two links are shown only for a super admin */}
-                        {userInfo.manager && <Link to="/admin/search-user"><div className="link my-3">Search Users</div></Link>}
-                        {userInfo.manager && <Link to="/admin/administrator-management"><div className="link my-3">Administrators</div></Link>}
+                        <Link to="/admin/search-user"><div className="link my-3">Search Users</div></Link>
                         <Link to="/admin/my-profile"><div className="link">Account Setting</div></Link>
                     </div>
                 </div>

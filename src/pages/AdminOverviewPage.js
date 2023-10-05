@@ -3,7 +3,6 @@ import Header from 'components/Header';
 import SideBar from "components/AdminSidebar";
 import Footer from 'components/Footer'
 import { useDispatch, useSelector } from 'react-redux';
-import { numOfUnvalidatedUsers, numOfValidatedUsers } from 'actions/userActions';
 import LoadingBox from 'components/LoadingBox';
 import MessageBox from 'components/MessageBox';
 import { Link } from 'react-router-dom';
@@ -12,28 +11,19 @@ export default function OverviewPage() {
     const dispatch = useDispatch();
     //get the admin user information
     const userSignin = useSelector(state => state.userSignin);
-    const { userInfo } = userSignin;
-    const userCommunity = userInfo.communityName;
 
     //states of getting the number of validated users
-    const validatedUsersCount = useSelector((state) => state.validatedUsersCount);
-    const { loading: loadingOfValidated, error: errorOfValidated, counterOfValidated } = validatedUsersCount;
+    const validatedUsersCount = 0;
 
     //states of getting the number of unvalidated users
-    const unvalidatedUsersCount = useSelector((state) => state.unvalidatedUsersCount);
-    const { loading: loadingOfUnvalidated, error: errorOfUnvalidated, counterOfUnvalidated } = unvalidatedUsersCount;
+    const unvalidatedUsersCount =  0;
 
     useEffect(() => {
-        dispatch(numOfValidatedUsers(userCommunity));
-        dispatch(numOfUnvalidatedUsers(userCommunity));
-    }, [dispatch, userCommunity]);
+        //dispatch(numOfValidatedUsers(userCommunity));
+        //dispatch(numOfUnvalidatedUsers(userCommunity));
+    }, [dispatch]);
     return (
         <div >
-            {loadingOfValidated || loadingOfUnvalidated? (
-                <LoadingBox></LoadingBox>
-            ) : errorOfValidated || errorOfUnvalidated? (
-                <MessageBox variant="danger">{errorOfValidated}</MessageBox>
-            ) : (
                 <div>
                     <Header />
                     <div className="columns sidebar-content">
@@ -48,9 +38,9 @@ export default function OverviewPage() {
                                     </div>
 
                                     <div className="columns has-text-centered">
-                                        <div className="column is-one-third "> {counterOfValidated + counterOfUnvalidated} </div>
-                                        <div className="column is-one-third "> <Link to='/admin/awaiting-validation'>{counterOfUnvalidated} </Link></div>
-                                        <div className="column is-one-third ">{counterOfValidated}</div>
+                                        <div className="column is-one-third "> {0 + 0   } </div>
+                                        <div className="column is-one-third "> <Link to='/admin/awaiting-validation'>{0} </Link></div>
+                                        <div className="column is-one-third ">{0}</div>
                                     </div>
 
                                 </div>
@@ -59,7 +49,6 @@ export default function OverviewPage() {
                     </div>
                     <Footer />
                 </div>
-            )}
         </div>
 
     );
