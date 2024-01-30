@@ -6,6 +6,11 @@
 
 - [vite](https://vitejs.dev/)
 
+## UI/Components/Styling
+
+- added tailwind, + shadcn component lib (both used currently in next frontend)
+- same approach to forms as next app (react-hook-forms, zod for validation etc.)
+
 ## Migrate Old Redux Logic to New Redux Logic
 
 - [Redux Toolkit Migrating Guide](https://redux.js.org/usage/migrating-to-modern-redux)
@@ -234,9 +239,9 @@ export const useAuth = () => {
 }
 ```
 
-## Better Route Layout Management
-
 <!-- TODO -->
+
+## TODO
 
 ### Fix tests?
 
