@@ -10,6 +10,7 @@
 ## Migrate Old Redux Logic to New Redux Logic
 
 - RTK for data fetching and caching
+  - app/services, is where the data fetching/mutation logic is, dont need to use axios with this approach
 - feature slices for state management
 
 ## Better Route Layout Management
