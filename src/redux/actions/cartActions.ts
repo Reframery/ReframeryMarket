@@ -22,7 +22,7 @@ import {
   AddItemToCart,
   DeleteItemFromCart,
   UpdateItemQuantity,
-} from "api/cart"
+} from "redux/api/cart"
 
 import type { Dispatch } from "redux"
 
@@ -61,7 +61,7 @@ export const updateItemCount =
   async (dispatch: Dispatch) => {
     dispatch({ type: EDIT_NUMBER_IN_CART_REQUEST })
     try {
-      const data = await UpdateItemQuantity({cartId, quantity})
+      const data = await UpdateItemQuantity({ cartId, quantity })
       dispatch({ type: EDIT_NUMBER_IN_CART_SUCCESS, payload: data })
     } catch (error) {
       dispatch({

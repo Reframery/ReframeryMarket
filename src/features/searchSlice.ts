@@ -4,7 +4,16 @@ import {
   createAsyncThunk,
   createSlice,
 } from "@reduxjs/toolkit"
-import { SearchItemParams, SearchItems } from "api/item"
+import axios from "lib/axios"
+
+type SearchItemParams = {
+  community?: string
+  searchTerm?: string
+  category?: string
+  subcategory?: string
+  page: number
+  limit: number
+}
 
 type SearchState = {
   loading: boolean
@@ -20,7 +29,16 @@ const initialState: SearchState = {
   error: null,
 }
 
-const searchItems = createAsyncThunk("/search", SearchItems)
+// ! old thunk approach needs to be replaced with RTK query
+const searchItems = createAsyncThunk(
+  "/search",
+  async (params: SearchItemParams) => {
+    const res = await axios.get("/market/item/search", {
+      params,
+    })
+    return res.data
+  }
+)
 
 const searchSlice = createSlice({
   name: "item",
