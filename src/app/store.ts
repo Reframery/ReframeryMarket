@@ -8,14 +8,12 @@ import {
 
 import { api } from "./services/api"
 import authReducer from "../features/auth/authSlice"
-import cartReducer from "../features/cartSlice"
 import searchReducer from "../features/searchSlice"
 
 const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
     auth: authReducer,
-    cart: cartReducer,
     search: searchReducer,
   },
   middleware: (getDefaultMiddleware) =>
