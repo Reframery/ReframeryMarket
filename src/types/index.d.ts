@@ -36,12 +36,12 @@ type MarketItem = TimeStamped<{
   id: number
   userId: number
   itemName: string
-  itemImage: string | null
+  itemImage: string
   unitPrice: number
   discount: number
   stock: number
   description: string | null
-  category: string
+  category: "product" | "service" | "expertise"
   subcategory: string | null
   province: string
   city: string | null
@@ -55,4 +55,16 @@ type CartItem = {
   itemId: number
   userId: number
   count: number
+}
+
+type MarketTransaction = {
+  id: number
+  senderId: number
+  sender: {
+    email: string
+  }
+  receiver: { email: string }
+  receiverId: number
+  creditUnit: number
+  createdAt: string
 }
