@@ -1,3 +1,6 @@
+// ! ************************************************
+// ! ONLY FOR REFERENCE (DO NOT USE IN CURRENT APP)
+// ! ************************************************
 import type { PayloadAction } from "@reduxjs/toolkit"
 import {
   ADMIN_LIST_FAIL,

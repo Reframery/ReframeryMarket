@@ -1,3 +1,6 @@
+// ! ************************************************
+// ! ONLY FOR REFERENCE (DO NOT USE IN CURRENT APP)
+// ! ************************************************
 //constants for user sign in
 export const USER_SIGNIN_REQUEST = 'USER_SIGNIN_REQUEST';
 export const USER_SIGNIN_SUCCESS = 'USER_SIGNIN_SUCCESS';

@@ -1,3 +1,6 @@
+// ! ************************************************
+// ! ONLY FOR REFERENCE (DO NOT USE IN CURRENT APP)
+// ! ************************************************
 import { combineReducers, legacy_createStore as createStore } from "redux"
 
 import { itemsSearchReducer } from "redux/reducers/searchReducers"

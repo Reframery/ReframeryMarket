@@ -1,3 +1,6 @@
+// ! ************************************************
+// ! ONLY FOR REFERENCE (DO NOT USE IN CURRENT APP)
+// ! ************************************************
 //constants for creating an order
 export const ORDER_CREATE_REQUEST = "ORDER_CREATE_REQUEST";
 export const ORDER_CREATE_SUCCESS = "ORDER_CREATE_SUCCESS";

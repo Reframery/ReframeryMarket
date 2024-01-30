@@ -1,3 +1,6 @@
+// ! ************************************************
+// ! ONLY FOR REFERENCE (DO NOT USE IN CURRENT APP)
+// ! ************************************************
 // constants for removing an item from shopping cart
 export const REMOVE_FROM_CART_REQUEST = "REMOVE_FROM_CART_REQUEST";
 export const REMOVE_FROM_CART_SUCCESS = "REMOVE_FROM_CART_SUCCESS";

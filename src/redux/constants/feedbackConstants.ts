@@ -1,3 +1,6 @@
+// ! ************************************************
+// ! ONLY FOR REFERENCE (DO NOT USE IN CURRENT APP)
+// ! ************************************************
 //constants for creating a feedback record
 export const FEEDBACK_CREATE_REQUEST = "FEEDBACK_CREATE_REQUEST";
 export const FEEDBACK_CREATE_SUCCESS = "FEEDBACK_CREATE_SUCCESS";

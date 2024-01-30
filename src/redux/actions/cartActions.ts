@@ -1,3 +1,6 @@
+// ! ************************************************
+// ! ONLY FOR REFERENCE (DO NOT USE IN CURRENT APP)
+// ! ************************************************
 import { handleErrorPayload } from "lib/utils"
 import {
   REMOVE_FROM_CART_REQUEST,

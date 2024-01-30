@@ -1,3 +1,6 @@
+// ! ************************************************
+// ! ONLY FOR REFERENCE (DO NOT USE IN CURRENT APP)
+// ! ************************************************
 //constants for creating a new item
 export const ITEM_CREATE_REQUEST = 'ITEM_CREATE_REQUEST';
 export const ITEM_CREATE_SUCCESS = 'ITEM_CREATE_SUCCESS';

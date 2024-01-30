@@ -1,3 +1,6 @@
+// ! ************************************************
+// ! ONLY FOR REFERENCE (DO NOT USE IN CURRENT APP)
+// ! ************************************************
 //constants for get a transaction details
 export const TRANSACTION_GET_REQUEST = 'TRANSACTION_GET_REQUEST';
 export const TRANSACTION_GET_SUCCESS = 'TRANSACTION_GET_SUCCESS';
