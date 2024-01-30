@@ -4,14 +4,16 @@
 
 ## Migrate from CRA -> Vite
 
-## Migrate from using JS -> TS
+- [vite](https://vitejs.dev/)
 
 ## Migrate Old Redux Logic to New Redux Logic
 
+- [Redux Toolkit Migrating Guide](https://redux.js.org/usage/migrating-to-modern-redux)
+- [RTK](https://redux-toolkit.js.org/rtk-query/overview)
 - RTK for data fetching and caching
-  - app/services, is where the data fetching/mutation logic is, dont need to use axios with this approach
+  - app/services, is where the data fetching/mutation logic is, don't need to use axios with this approach
 
-With this approach using with auth in headers is not needed as well
+With this approach using `auth()` in headers is not needed as well
 
 **app/services/api.ts**
 
@@ -42,11 +44,11 @@ export const api = createApi({
 })
 ```
 
-Basic usage
+### Basic usage
 
 - define a tag type in the main api file if needed (for revalidation after mutation)
 - extend the base api for a new feature (transaction, item etc.)
-- this example has the basic CRUD operations
+- this example has the basic CRUD operations for an item
 - hooks are automatically generated to fetch data in the component
 
 **app/services/item.ts**
@@ -150,6 +152,8 @@ export default function EditItemPage() {
   )
 }
 ```
+
+### Feature slices redux-toolkit
 
 - feature slices for state management
 - in the current auth flow the token/user are stored in the authSlice
