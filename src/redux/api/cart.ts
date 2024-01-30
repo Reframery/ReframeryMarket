@@ -1,3 +1,6 @@
+// ************************************************
+// * ONLY FOR REFERENCE (was used with the async thunk approach which is not needed b/c RTK query
+// ************************************************
 import axios from "../../lib/axios"
 
 const BASE_URL = "/market/cart"
