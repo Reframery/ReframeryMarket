@@ -1,0 +1,1166 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  html {
+    @apply min-h-screen bg-[#fafafa];
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  input[type="checkbox"] {
+    float: left;
+    width: 10px;
+  }
+
+  input[type="checkbox"] + label {
+    display: block;
+    width: auto;
+  }
+
+  table.transaction {
+    border-collapse: separate;
+    border: none;
+    border-spacing: 0 20px;
+    display: table;
+  }
+
+  tr.transaction-row:hover {
+    background-color: #f5f5f5;
+    text-align: left;
+  }
+
+  td.trans-text {
+    text-align: left;
+    border: outset;
+    width: 500px;
+  }
+
+  td.trans-text li {
+    list-style-type: none;
+  }
+
+  td.trans-price {
+    text-align: center;
+    border: outset;
+    width: 200px;
+  }
+
+  /******************** App ***********************/
+}
+
+@layer components {
+  /* Link */
+  .link:hover {
+    color: #304ffe;
+  }
+
+  :link {
+    text-decoration: none;
+  }
+
+  :visited {
+    text-decoration: none;
+  }
+
+  .background-white {
+    background-color: white;
+  }
+
+  /***************** Alert *******************/
+  .loading {
+    font-size: 40px;
+  }
+
+  .success {
+    color: green;
+  }
+
+  .danger {
+    color: red;
+  }
+
+  .alert {
+    padding: 10px;
+    border: 1px solid transparent;
+    border: 5px;
+  }
+
+  .alert-info {
+    color: blue;
+    background-color: white;
+  }
+
+  .alert-danger {
+    color: red;
+    background-color: white;
+  }
+
+  /******************** Header ***********************/
+
+  .header-container {
+    border-bottom: 1px solid #9e9e9e;
+    height: 70px;
+    background-color: #c9168d;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .navbar-logo {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .navbar-start {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .navbar-search {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .navbar-end {
+    padding-right: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .header-container .nav-item {
+    font-size: 20px;
+    color: white;
+    padding: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  /**   dropdown */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown ul {
+    display: none;
+    position: absolute;
+    margin-top: 50px;
+    /* margin-left: 6vw; */
+    /* margin-right: 10px; */
+    height: 30px;
+    width: 120px;
+    background-color: white;
+    padding: 0;
+    text-align: center;
+  }
+
+  .dropdown .link {
+    color: #01579b;
+    font-size: 18px;
+  }
+
+  .dropdown .link:hover {
+    color: blue;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .add-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .add-dropdown-content button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .add-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .add-dropdown:hover .add-dropdown-content {
+    display: block;
+  }
+
+  .add-dropdown-content a:hover {
+    background-color: #ddd;
+  }
+
+  /******************** Sidebar ***********************/
+  /* layout for sidebar and content of pages*/
+  .sidebar-content {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 1200px;
+    min-height: 600px;
+  }
+
+  .sidebar-container {
+    padding-top: 30px;
+    width: 200px;
+    padding-left: 20px;
+  }
+
+  .sidebar {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 10px;
+  }
+
+  .sidebar .link:hover {
+    font-weight: bold;
+    color: #304ffe;
+  }
+
+  /******************** Footer ***********************/
+  .footer .text {
+    display: flex;
+    flex-wrap: wrap;
+    margin-inline: auto;
+  }
+
+  .footer .text div {
+    margin: auto;
+    /* padding-top: 30px; */
+    text-align: center;
+  }
+
+  /******************** WelcomeComponent ***********************/
+
+  .welcome-container .left {
+    margin: auto;
+    background-color: rgb(231, 228, 228);
+    padding-top: 30px;
+  }
+
+  .welcome-container .head {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    padding-left: 5%;
+  }
+
+  .welcome-container .head .link {
+    color: #7a023c;
+  }
+
+  .welcome-container .head .link:hover {
+    color: blue;
+  }
+
+  .welcome-container .head .text {
+    font-size: 24px;
+    color: #7a023c;
+    width: 179px;
+    text-align: left;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-top: 20px;
+    font-weight: bold;
+  }
+
+  .welcome-container .description {
+    margin: auto;
+    padding-top: 40px;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .welcome-container .description h2 {
+    color: #b8817d;
+    font-size: 30px;
+  }
+
+  .welcome-container .description li {
+    color: #b8817d;
+    font-size: 24px;
+    padding-bottom: 20px;
+  }
+
+  .welcome-container .left img {
+    margin: 0;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /******************** WelcomePage ***********************/
+  .welcome-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-left: 6%;
+    margin-right: 6%;
+  }
+
+  .welcome-container .right {
+    margin: auto;
+    padding-top: 30px;
+  }
+
+  .welcome-container .right .text {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 375px;
+    font-size: 40px;
+    color: #545871;
+    margin-top: 100px;
+    margin-bottom: 30px;
+  }
+
+  .welcome-container .communities {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .welcome-container .community {
+    width: 150px;
+    height: 150px;
+  }
+
+  .welcome-container .community .country {
+    font-size: 24px;
+    margin: auto;
+    padding-top: 10px;
+    text-align: center;
+  }
+
+  .welcome-container .community img {
+    display: block;
+    max-width: 80px;
+    margin: auto;
+  }
+
+  .welcome-container .right button {
+    margin-top: 20%;
+    margin-left: 80%;
+    font-size: 24px;
+    border: black 1px solid;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+  }
+
+  .welcome-container .logo-canada:hover {
+    background-color: #f44336;
+    width: 100px;
+  }
+
+  .welcome-container .country:hover {
+    color: #304ffe;
+    text-decoration: underline;
+  }
+
+  /***************** SigninPage RegisterPage*******************/
+
+  .welcome-container .form {
+    width: 400px;
+    margin: auto;
+    height: auto;
+    margin-left: 50px;
+  }
+
+  .welcome-container .form h3 {
+    color: black;
+    text-align: center;
+    padding: 20px;
+    font-size: 25px;
+  }
+
+  .welcome-container .form div {
+    text-align: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .welcome-container .form label {
+    font-size: 16px;
+    margin: 0 0 10px;
+  }
+
+  .welcome-container .form input {
+    width: 100%;
+    border: 0;
+    border: #9e9e9e 1px solid;
+    border-radius: 10px;
+    margin: 0 0 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  .welcome-container .form .select-box {
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 16px;
+  }
+
+  /* checkbox */
+  .welcome-container .form .admin-checkbox {
+    margin-top: 30px;
+  }
+
+  .welcome-container .form .box {
+    width: 10%;
+  }
+
+  .welcome-container .form .terms {
+    margin-top: 20px;
+    color: black;
+    font-size: 14px;
+  }
+
+  .welcome-container .submit-button {
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+  }
+
+  .welcome-container .button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+  }
+
+  .welcome-container .form .message {
+    color: black;
+    font-size: 14px;
+    text-align: center;
+    background-color: transparent;
+  }
+
+  .welcome-container .form .link:hover {
+    color: blue;
+    font-size: 15px;
+    text-decoration: blink;
+  }
+
+  /******************** ItemsPage***********************/
+
+  .home-container .background {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .home-container .background .text {
+    padding-top: 50px;
+    margin-left: auto;
+    margin-right: 6%;
+    padding-bottom: 20px;
+  }
+
+  .home-container .text .slogan-container {
+    max-width: 400px;
+    font-size: 40px;
+    color: black;
+  }
+
+  /******************** MoreItemsPage*****************/
+  .moreItems-category {
+    font-size: 48px;
+    font-weight: bold;
+    color: #545871;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .list-products {
+    min-height: 600px;
+  }
+
+  .page-number {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .page-button {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .button1 {
+    min-width: 150px;
+  }
+
+  .button2 {
+    min-width: 150px;
+  }
+
+  .button1 button {
+    width: 100%;
+  }
+
+  .button2 button {
+    width: 100%;
+  }
+
+  /******************** ListItem ***********************/
+
+  .itemlist-container .home-category {
+    font-size: 48px;
+    font-weight: bold;
+    color: #545871;
+    text-align: center;
+    padding-bottom: 50px;
+  }
+
+  .itemlist-container .list-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: auto;
+  }
+
+  .itemlist-container .list-items .item {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    margin-right: 2%;
+    margin-left: 2%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    padding-right: 40px;
+  }
+
+  .itemlist-container .item-info {
+    width: 150px;
+    margin-left: 10px;
+  }
+
+  .itemlist-container .item-image {
+    width: 150px;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .itemlist-container .item-name {
+    height: 40%;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+  }
+
+  .item-city,
+  .item-price,
+  .item-rating {
+    height: 15%;
+    margin-top: 10px;
+  }
+
+  .itemlist-container .link {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .itemlist-container .link:hover {
+    color: blue;
+    text-decoration: underline;
+  }
+
+  .itemlist-container .item-price {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  /******************** Rating ***********************/
+  .rating {
+    color: #ff9800;
+    margin: 1px;
+  }
+
+  .rating span:last-child {
+    color: black;
+  }
+
+  .far {
+    color: #404040;
+  }
+
+  /******************** ProfilePage ***********************/
+
+  .profile-container {
+    flex-grow: 2;
+  }
+
+  .profile-container .form-profile {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    width: 700px;
+    background-color: white;
+    padding-left: 50px;
+    padding-bottom: 50px;
+  }
+
+  .profile-container .danger {
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+
+  .profile-container .title-image {
+    /* padding-top: 30px; */
+    display: flex;
+  }
+
+  .profile-container .upload-image {
+    width: 300px;
+  }
+
+  .profile-container input {
+    width: 200px;
+  }
+
+  .upload-image button {
+    color: blue;
+  }
+
+  .profile-container .upload-image .upload-button {
+    margin-top: 0;
+    font-size: 20px;
+  }
+
+  .profile-container .upload-button .fileinputs {
+    position: relative;
+  }
+
+  .profile-container .upload-button .fileinputs .file {
+    position: relative;
+    text-align: right;
+    opacity: 0;
+    z-index: 2;
+  }
+
+  .profile-container .upload-button .fileinputs .fakefile {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+
+  .profile-container .fileinputs:hover {
+    cursor: pointer;
+  }
+
+  .profile-container .title-image h1 {
+    padding-top: 40px;
+    font-size: 30px;
+  }
+
+  .profile-container .form-profile .profile-row div {
+    padding-top: 30px;
+    margin-right: 50px;
+  }
+
+  .profile-row label {
+    width: 120px;
+    display: inline-block;
+  }
+
+  .profile-row input {
+    width: 300px;
+    min-height: 20px;
+    margin-right: 10px;
+    border: 1px bold gray;
+  }
+
+  .profile-row button {
+    color: blue;
+  }
+
+  .address-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+    background-color: white;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-left: 30px;
+  }
+
+  .address-container .form-profile div {
+    padding-top: 30px;
+    margin-right: 50px;
+  }
+
+  .address-container .button-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .address-container .button-container button {
+    margin-top: 60px;
+    margin-left: 60px;
+    margin-right: 30px;
+  }
+
+  .address-container h1 {
+    font-size: 30px;
+  }
+
+  /******************** Info-page ***********************/
+  .info-page {
+    min-height: 700px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .info-page .container {
+    margin-top: 40px;
+    margin-left: 10%;
+  }
+
+  /* desktop */
+  @media (min-width: 992px) {
+    .home-container .list-items-signin {
+      max-width: 70%;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .home-container .list-items-signin {
+      max-width: 100%;
+    }
+  }
+
+  /**********************************************************************************/
+
+  /******************** ItemDetails ***********************/
+  .item-page {
+    padding-top: 50px;
+  }
+
+  /* layout: image, information, action */
+  .details {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 30px;
+    margin-right: 100px;
+    margin-left: 100px;
+  }
+
+  .back-to-mar {
+    text-decoration: underline;
+  }
+
+  .details-c1 {
+    flex: 1 1 100px;
+    text-align: center;
+  }
+
+  .details-buttons {
+    padding: 1rem;
+  }
+
+  .details-button {
+    height: 150px;
+    width: 250px;
+    padding: 3rem;
+    border: 0.1rem #f5f5f5 solid;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-align: center;
+    font-size: large;
+    margin: 10px;
+  }
+
+  .details-button:hover {
+    border: 0.1rem #404040 solid;
+    background-color: aqua;
+  }
+
+  .details-image img {
+    max-width: 200px;
+  }
+
+  /* information */
+  .details-information {
+    flex: 1 1 300px;
+    margin-right: 30px;
+    margin-left: 100px;
+  }
+
+  .details-title {
+    text-align: center;
+  }
+
+  .details-description {
+    font-weight: bold;
+  }
+
+  .details-description-content {
+    font-weight: normal;
+  }
+
+  /* action */
+  .details-action {
+    flex: 1 1 250px;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .details-information ul,
+  .details-action ul {
+    list-style-type: none;
+  }
+
+  .details-information li,
+  .details-action li {
+    margin-bottom: 10px;
+  }
+
+  .details-action .price {
+    color: #e53935;
+  }
+
+  .details-action {
+    border: 1px grey solid;
+    border-radius: 5px;
+    background-color: white;
+    padding-left: 0px;
+    padding-right: 20px;
+  }
+
+  .button-addToCart {
+    outline-style: none;
+    margin-top: 20px;
+    padding: 5px;
+    border: 1px grey solid;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #ff9100;
+    width: 100%;
+  }
+
+  .button-addToCart:hover {
+    background-color: #ff6d00;
+  }
+
+  .button-buy {
+    outline-style: none;
+    padding: 5px;
+    border: 1px grey solid;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f44336;
+    width: 100%;
+  }
+
+  .button-buy:hover {
+    background-color: #e53935;
+  }
+
+  /***************** WalletPage *******************/
+
+  .button-more {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .currency-box {
+    margin-top: 50px;
+    width: 200px;
+    border-style: dotted;
+    border-radius: 25px;
+    background-color: lightcoral;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .trans-image {
+    width: 10px;
+    height: 20px;
+  }
+
+  .back-to-reframery {
+    padding: 1 rem;
+  }
+
+  .wallet {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 1 rem;
+    margin-left: 100px;
+    margin-top: 50px;
+  }
+
+  .wallet-c1 {
+    float: left;
+  }
+
+  .wallet-c2 {
+    margin-left: 100px;
+    float: right;
+  }
+
+  /***************** MyItemPage *******************/
+
+  .sidebar-content .container {
+    width: 500px;
+  }
+
+  .item-main {
+    margin: 30px;
+    border: outset;
+  }
+
+  /***************** CreatedItemList *******************/
+
+  .myitems-header {
+    font-size: 30px;
+    font-weight: bold;
+    color: #545871;
+    text-align: left;
+  }
+
+  /***************** Landing Page *******************/
+  .hero {
+    background-image: url(../assets/Friendship-Day.jpg);
+    background-size: cover;
+  }
+
+  .slogan-container {
+    margin-bottom: 3rem;
+  }
+
+  /***************** Cart Page *******************/
+  .cart {
+    padding: 5rem 0;
+    height: 85vh;
+
+    .cart-items {
+      max-height: 70vh;
+      overflow: scroll;
+    }
+  }
+
+  .cart-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: 30vh;
+
+    .totals-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      margin-top: 5vh;
+    }
+  }
+  .cart {
+    padding: 5rem 0;
+    height: 85vh;
+
+    .cart-items {
+      max-height: 70vh;
+      overflow: scroll;
+    }
+  }
+
+  .cart-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: 30vh;
+
+    .totals-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      margin-top: 5vh;
+    }
+  }
+
+  /***************** Payment Page *******************/
+  .payment-container {
+    padding: 5rem 0;
+    height: 85vh;
+  }
+
+  /***************** Address Page *******************/
+  .billing-container {
+    margin-top: 15%;
+  }
+
+  .address-buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .address-form-container {
+    padding: 5rem 0;
+    height: 85vh;
+  }
+
+  /***************** Confirm Page *******************/
+  .dl-horizontal {
+    margin: 0;
+    & dt {
+      float: left;
+      width: 150px;
+      overflow: hidden;
+      clear: left;
+      text-align: right;
+    }
+    & dd {
+      text-align: left;
+      margin-left: 30%;
+      overflow: scroll;
+    }
+  }
+
+  .confirm-container {
+    padding: 5rem 0;
+  }
+
+  .confirm-table {
+    height: 20vh;
+    overflow: scroll;
+  }
+
+  .confirm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: 25vh;
+
+    .totals-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      margin-top: 5vh;
+    }
+  }
+}
