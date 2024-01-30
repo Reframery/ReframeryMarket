@@ -1,6 +1,7 @@
 # Changes
 
-## Dependencies
+## New Dependencies
+
 
 ## Migrate from CRA -> Vite
 
@@ -24,7 +25,7 @@
 - ProfilePage
 - SearchResultsPage
 
-### Pages (Fix/add actual functionality) Improve UI
+### Pages (Fix/add missing functionality) Improve UI
 
 - `ItemPage`
 - `MoreItems`
