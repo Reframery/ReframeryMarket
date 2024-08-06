@@ -6,6 +6,7 @@ import fs from "fs/promises";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import Stripe from "stripe";
+import { put, del } from "@vercel/blob";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
@@ -31,12 +32,17 @@ export async function addProduct(prevState: unknown, formData: FormData) {
 
   const data = result.data;
 
-  await fs.mkdir("public/products", { recursive: true });
-  const imagePath = `/products/${crypto.randomUUID()}-${data.image.name}`;
-  await fs.writeFile(
-    `public${imagePath}`,
-    Buffer.from(await data.image.arrayBuffer())
-  );
+  // await fs.mkdir("public/products", { recursive: true });
+  // const imagePath = `/products/${crypto.randomUUID()}-${data.image.name}`;
+  // await fs.writeFile(
+  //   `public${imagePath}`,
+  //   Buffer.from(await data.image.arrayBuffer())
+  // );
+
+  const imageFile = data.image as File;
+  const blob = await put(imageFile.name, imageFile, {
+    access: "public",
+  });
 
   const prod = await prisma.product.create({
     data: {
@@ -44,7 +50,7 @@ export async function addProduct(prevState: unknown, formData: FormData) {
       stock: data.stock,
       priceInCents: data.price,
       description: data.desc,
-      imagePath: imagePath,
+      imagePath: blob.url,
     },
   });
 
@@ -79,12 +85,12 @@ export async function updateProduct(
 
   let imagePath = product.imagePath;
   if (data.image != null && data.image.size > 0) {
-    await fs.unlink(`public${product.imagePath}`);
-    imagePath = `/products/${crypto.randomUUID()}-${data.image.name}`;
-    await fs.writeFile(
-      `public${imagePath}`,
-      Buffer.from(await data.image.arrayBuffer())
-    );
+    await del(imagePath);
+    const imageFile = data.image as File;
+    const blob = await put(imageFile.name, imageFile, {
+      access: "public",
+    });
+    imagePath = blob.url
   }
 
   await prisma.product.update({
@@ -107,6 +113,6 @@ export async function deleteProduct(id: string) {
   const product = await prisma.product.delete({ where: { id } });
   if (product == null) return;
   await stripe.products.del(product.id);
-  await fs.unlink(`public${product.imagePath}`);
+  await del(product.imagePath);
   // if( product == null) return notFound();
 }
